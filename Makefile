@@ -31,8 +31,8 @@ build: all-charts
 .PHONY: manifests
 manifests: main-chart
 	@helm template -n default \
-	   --set global.splunk.hec.host=MY-SPLUNK-HOST \
-	   --set global.splunk.hec.token=MY-SPLUNK-TOKEN \
+	   --set global.splunk.hec.host=52.168.27.160 \
+	   --set global.splunk.hec.token=093befdc-b91f-4589-b447-4895c1e1e056 \
 	   --set global.splunk.hec.insecureSSL=true \
 	   --set splunk-kubernetes-logging.fullnameOverride="splunk-kubernetes-logging" \
 	   --set splunk-kubernetes-metrics.fullnameOverride="splunk-kubernetes-metrics" \
