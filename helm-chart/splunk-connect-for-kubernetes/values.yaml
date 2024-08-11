@@ -63,6 +63,12 @@ global:
     service:
       enabled: true
       headless: true
+
+  tolerations:
+    - key: "CriticalAddonsOnly"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
   # deploy a ServiceMonitor object for usage of the PrometheusOperator
   serviceMonitor:
     enabled: false
