@@ -31,20 +31,20 @@ build: all-charts
 .PHONY: manifests
 manifests: main-chart
 	@helm template -n default \
-	   --set global.splunk.hec.host=52.168.27.160 \
-	   --set global.splunk.hec.token=093befdc-b91f-4589-b447-4895c1e1e056 \
-	   --set global.splunk.hec.insecureSSL=true \
+	   --set global.splunk.hec.host=172.191.11.89 \
+	   --set global.splunk.hec.token=0f0e07ee-7dc3-4abc-8a81-8a7f13ddc51a \
+	   --set global.splunk.hec.insecureSSL=false \
 	   --set splunk-kubernetes-logging.fullnameOverride="splunk-kubernetes-logging" \
 	   --set splunk-kubernetes-metrics.fullnameOverride="splunk-kubernetes-metrics" \
 	   --set splunk-kubernetes-objects.fullnameOverride="splunk-kubernetes-objects" \
-	   --set splunk-kubernetes-objects.kubernetes.insecureSSL=true \
+	   --set splunk-kubernetes-objects.kubernetes.insecureSSL=false \
 	   --set splunk-kubernetes-objects.image.tag=$(KUBE_OBJECT_VERSION) \
 	   --set splunk-kubernetes-logging.image.tag=$(FLUENTD_HEC_VERSION) \
 	   --set splunk-kubernetes-metrics.image.tag=$(K8S_METRICS_VERISION) \
 	   --set splunk-kubernetes-metrics.imageAgg.tag=$(K8S_METRICS_AGGR_VERSION) \
-	   --set splunk-kubernetes-logging.podSecurityPolicy.create=true \
-	   --set splunk-kubernetes-metrics.podSecurityPolicy.create=true \
-	   --set splunk-kubernetes-objects.podSecurityPolicy.create=true \
+	   --set splunk-kubernetes-logging.podSecurityPolicy.create=false \
+	   --set splunk-kubernetes-metrics.podSecurityPolicy.create=false \
+	   --set splunk-kubernetes-objects.podSecurityPolicy.create=false \
 	   $$(ls build/splunk-connect-for-kubernetes-*.tgz) \
 	   | ruby tools/gen_manifest.rb manifests
 

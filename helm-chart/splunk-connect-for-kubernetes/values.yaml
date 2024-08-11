@@ -11,18 +11,18 @@ global:
   splunk:
     hec:
       # host is required and should be provided by user
-      host: 52.168.27.160
+      host: 172.191.11.89
       # port to HEC, optional, default 8088
       port: 8088
       # token is required and should be provided by user
-      token: 093befdc-b91f-4589-b447-4895c1e1e056
+      token: 0f0e07ee-7dc3-4abc-8a81-8a7f13ddc51a
       # protocol has two options: "http" and "https", default is "https"
       # For self signed certificate leave this field blank
       protocol: http
       # Allow specifying the HEC endpoint to use, default is "/services/collector"
       endpoint:
       # Instead of providing host, port, and protocol, you can provide full url for splunk. For example: https://mydomain.com:8088/apps/splunk
-      fullUrl: http://52.168.27.160:8088
+      fullUrl: http://172.191.11.89:8088
       # indexName tells which index to use, this is optional. If it's not present, will use "main".
       indexName: aks
       # insecureSSL is a boolean, it indicates should it allow insecure SSL connection (when protocol is "https"). Default is false.
@@ -970,16 +970,16 @@ splunk-kubernetes-metrics:
     # Configurations for HEC (HTTP Event Collector)
     hec:
       # hostname/ip of HEC, REQUIRED.
-      host: 52.168.27.160
+      host: 172.191.11.89
       # port to HEC, OPTIONAL. Default value: 8088
       port: 8088
       # the HEC token, REQUIRED.
-      token: 093befdc-b91f-4589-b447-4895c1e1e056
+      token: 0f0e07ee-7dc3-4abc-8a81-8a7f13ddc51a
       # protocol has two options: "http" and "https". Default value: "https"
       # For self signed certificate leave this field blank
       protocol: http
       # Instead of providing host, port, and protocol, you can provide full url for splunk. For example: https://mydomain.com:8088/apps/splunk
-      fullUrl: http://52.168.27.160:8088
+      fullUrl: http://172.191.11.89:8088
       # indexName tells which index to use, OPTIONAL. If it's not present, will use "main".
       indexName: k8s_metrics
       # insecureSSL is a boolean, it indicates should it allow insecure SSL connection (when protocol is "https"). Default value: false
