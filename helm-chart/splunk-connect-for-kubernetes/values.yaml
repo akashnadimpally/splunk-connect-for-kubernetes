@@ -1123,7 +1123,13 @@ splunk-kubernetes-metrics:
 
   # Tolerations for the aggregator pod. We do not really want this running on the master nodes, so we leave this
   # blank by default.
-  aggregatorTolerations: {}
+  aggregatorTolerations: 
+    - key: "CriticalAddonsOnly"
+      operator: "Exists"
+      effect: "NoSchedule"
+    - key: "kubernetes.azure.com/scalesetpriority"
+      operator: "Exists"
+      effect: "NoSchedule"
 
   # Defines priorityClassName to assign a priority class to metrics (daemonset) pods.
   priorityClassName:
