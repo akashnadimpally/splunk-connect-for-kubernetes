@@ -66,8 +66,10 @@ global:
 
   tolerations:
     - key: "CriticalAddonsOnly"
-      operator: "Equal"
-      value: "true"
+      operator: "Exists"
+      effect: "NoSchedule"
+    - key: "kubernetes.azure.com/scalesetpriority"
+      operator: "Exists"
       effect: "NoSchedule"
   # deploy a ServiceMonitor object for usage of the PrometheusOperator
   serviceMonitor:
@@ -479,8 +481,12 @@ splunk-kubernetes-logging:
   # This default tolerations allow the daemonset to be deployed on master nodes,
   # so that we can also collect logs from those nodes.
   tolerations:
-    - key: node-role.kubernetes.io/master
-      effect: NoSchedule
+    - key: "CriticalAddonsOnly"
+      operator: "Exists"
+      effect: "NoSchedule"
+    - key: "kubernetes.azure.com/scalesetpriority"
+      operator: "Exists"
+      effect: "NoSchedule"
 
   # Defines which nodes should be selected to deploy the fluentd daemonset.
   nodeSelector:
@@ -810,6 +816,14 @@ splunk-kubernetes-objects:
   # Extra labels for objects daemonset, pods
   extraLabels:
 
+  tolerations:
+    - key: "CriticalAddonsOnly"
+      operator: "Exists"
+      effect: "NoSchedule"
+    - key: "kubernetes.azure.com/scalesetpriority"
+      operator: "Exists"
+      effect: "NoSchedule"
+
   # = Resource Limitation Configs =
   resources:
     # limits:
@@ -844,7 +858,7 @@ splunk-kubernetes-objects:
 
   # This default tolerations allow the daemonset to be deployed on master nodes,
   # so that we can also collect metrics from those nodes.
-  tolerations: []
+  # tolerations: []
 
   # Defines node affinity to restrict pod deployment.
   affinity: {}
@@ -1101,8 +1115,10 @@ splunk-kubernetes-metrics:
   # so that we can also collect metrics from those nodes.
   tolerations:
     - key: "CriticalAddonsOnly"
-      operator: "Equal"
-      value: "true"
+      operator: "Exists"
+      effect: "NoSchedule"
+    - key: "kubernetes.azure.com/scalesetpriority"
+      operator: "Exists"
       effect: "NoSchedule"
 
   # Tolerations for the aggregator pod. We do not really want this running on the master nodes, so we leave this
