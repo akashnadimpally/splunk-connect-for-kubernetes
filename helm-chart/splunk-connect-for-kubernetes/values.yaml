@@ -59,6 +59,7 @@ global:
   monitoring_agent_index_name:
   monitoring_agent_bind_address:
   metrics:
+    indexName: k8s_metrics
     service:
       enabled: true
       headless: true
